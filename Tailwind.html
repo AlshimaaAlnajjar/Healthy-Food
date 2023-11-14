@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body class="text-sm md:text-base ">
+    <!-- حطينا الستايل في البادي عشان لو ضل في الهيد مش هيتطبق لانه اعدادات التيلويند بتيجي اخر الهيد ف بتتنفذ اخر شي -->
+    <style>
+        @keyframes scale {
+            from{ 
+               transform: scale(1);   
+            }
+            to{
+                transform: translateY(-5%);
+                transform: scale(1.1) translateY(-5%);
+            }
+        }
+                .ascale:hover{
+            animation-name:scale ;
+            animation-duration:1s;
+            animation-iteration-count:1;
+            animation-direction: alternate;
+        }
+        @keyframes scalerev {
+            from{ 
+                transform: scale(1.3);
+                background-size: 200%;
+             }
+            to{
+                transform: scale(1);
+                background-size: 100%;
+            }
+        }
+        #bgsection{
+            animation-name:scalerev ;
+            animation-duration:3s;
+            animation-iteration-count:1;
+            animation-direction: alternate; 
+        }
+        body{
+            color: #a3a6c5;
+            background-color: #fafbff;
+        }
+        nav
+        {font-size: 14px;
+            line-height: 20px;
+        }
+        h1{
+            color: #2b2f4e;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        h2{
+            color: #2b2f4e;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+        h3{
+            color: #2b2f4e;
+            font-weight: 600;
+        }
+        #bgsection{
+            background-image: url('./images/background2.svg'),url('./images/background1.jpg');
+            background-size: cover,cover;
+            height: 100vh;
+        }  
+        .container{
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+        } 
+    
+        </style>
+        <!--  عشان نظهر اللينكات فوق و نفعله لانه بدونها هيظهر كنص :حطينا z -->
+    <section class="bg-white/50  md:fixed top-0 left-0 w-full text-neutral-700 z-50 md:px-[10%]">
+        <header class=" md:container flex justify-between py-[22px] items-center">
+        <img class="inline" src="./images/logo-foodhouse.svg">
+        <ul class="md:inline-flex hidden text-center  "> 
+            <li class="px-8"><a href="#">About</a></li>
+            <li class="px-8"><a href="#">Events</a></li>
+            <li class="px-8"><a href="#">Menu</a></li> 
+            <li class="px-8"><a href="#">Gallery</a></li>
+            <li class="px-8"><a href="#">Contact</a></li>
+        </ul>
+        <!-- حطيناها عشان لما تظهر القائمة تختفي التلت خطوط و العكس -->
+        <div class="md:hidden items-center mr-3 ">
+            <button id="navIcon">
+               <svg class=" w-7 h-7 text-gray-500 hover:text-green-500 " x-show="!showMenu" fill="none" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-width="2" viewBox="0 0 28 28" stroke="currentColor">
+                  <!-- كل كلام جنب بعضه عبارة عن شرطة .....الباث هوا التلت شرطات  -->
+                   <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <div id="MobileMenu" class="hidden">
+        <ul class="bg-white text-center "> 
+            <li><a href="#" class="p-4 block">About</a></li>
+            <li><a href="#" class="p-4 block">Events</a></li>
+            <li><a href="#" class="p-4 block">Menu</a></li> 
+            <li><a href="#" class="p-4 block">Gallery</a></li>
+            <li><a href="#" class="p-4 block">Contact</a></li>
+        </ul>
+    </div>
+    </section>
+
+    <!-- هاد كود جافا عشان لما اضغط على تلت شرطات تظهر الي قائمة -->
+    <script>
+        // اول سطرين لتعريف متغير و استدعاء المطلوب
+        // أول كلمة لتعريف متغير 
+        const btn=document.getElementById('navIcon');
+        const menu=document.getElementById('MobileMenu');
+        // اضافة دالة و هي عكس الاخفاء هنا عند حدوث حدث على الزر و هنا هو الضغط عليه
+        btn.addEventListener('click',()=>{
+            menu.classList.toggle('hidden');
+        })
+    </script>
+    <div id="bgsection" class="p-[-10%]">
+        <section class="container h-full flex flex-wrap md:flex-nowrap items-center relative">
+            <div class="w-full md:w-2/5">
+                <h1 class="text-3xl leading-none  md:text-6xl md:leading-tight"> Enjoy healthy and delicious food.</h1>
+                <p> Etiam eros elit, consequat id varius vel, auctor et velit. Nulla interdum tempus felis, id venenatis
+                    enim lacinia
+                    pretium. </p>
+                    <!-- حطينا عرض عشان نحركه من ابوه لو ما اعطيناه ما هيفرق -->
+                <div class="mx-auto md:ml-0  w-52 text-center">
+                    <a href="#" class=" inline-block bg-[#2c2f4e] rounded-full py-2 md:py-4 w-full text-white mt-12">
+                        <img class="inline-block pr-3" src="./images/call.svg"> Order Now</a>
+                    <p class="text-gray-400 w-full mt-2">+12 345 678 900</p>
+                </div>
+            </div>
+            <div class=" absolute left-0 top-auto right-0 bottom-7 text-center md:text-left md:bottom-3 ">
+                <a href="#"><img src="./images/twitter.svg" class=" w-7 inline mr-3"></a>
+                <a href="#"><img src="./images/facebook.svg" class=" w-7 inline mr-3"></a>
+                <a href="#"><img src="./images/instagram.svg" class=" w-7 inline " ></a>
+            </div>
+        </section>
+    </div>
+    <section class="md:p-[10%] p-[5%] ">
+        <main class="flex flex-wrap md:flex-nowrap text-center shadow-lg shadow-gray-400 rounded-xl">
+            <div class=" box-border w-full p-[4%]">
+                <img class="inline" src="./images/1.svg">
+                <h3>Quality Food</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ultricies augue.</p>
+            </div>
+            <div class=" box-border w-full  p-[4%] relative">
+                <div class="bg-slate-300 mx-auto md:my-auto absolute md:w-px w-60 md:h-36 h-px top-0 left-0 right-0 md:right-auto md:bottom-0"></div>
+                <img class="inline"  src="./images/2.svg">
+                <h3>100% Organic Guarantee</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ultricies augue.</p>
+                <div class="bg-slate-300 mx-auto md:my-auto absolute md:w-px w-60 md:h-36 h-px  left-0 right-0 bottom-0 md:top-0 md:left-auto "></div>
+            </div>
+            <div class="box-border w-full  p-[4%] ">
+                <img class="inline"  src="./images/3.svg">
+                <h3>Fast Delivery</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ultricies augue.</p>
+            </div>
+        </main>
+    </section>
+    <section class="container flex flex-col-reverse md:flex-row ">
+        <div class="w-full md:w-1/2 grid grid-cols-2 gap-5">
+            <div class="bg-[url(./images/g1.jpg)] bg-no-repeat bg-cover bg-center h-[160px] md:h-[320px] rounded-lg"></div>
+            <div class="bg-[url(./images/g2.jpg)] bg-no-repeat bg-cover bg-center h-[130px] md:h-[260px] rounded-lg self-end md:w-[90%] md:mr-auto"></div>
+            <div class="bg-[url(./images/g3.jpg)] bg-no-repeat bg-cover bg-center h-[130px] md:h-[260px] rounded-lg md:w-[90%] md:ml-auto"></div>
+            <div class="bg-[url(./images/g4.jpg)] bg-no-repeat bg-cover bg-center h-[160px] md:h-[320px] rounded-lg"></div>
+        </div>
+        <div class="w-full md:w-1/2  my-16 md:ml-20 md:self-center  ">
+            <h2 class="text-2xl leading-none mb-[6%] md:text-5xl md:leading-[1.10]">Descover more<br> about us</h2>
+            <p class="mb-[3%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc molestie euismod mi, in fringilla neque condimentum ut. In hac habitasse platea dictumst. Aenean sit amet tempus justo. Nulla sagittis lacinia diam, consequat sodales nibh. Etiam gravida lacus at lorem convallis, in sollicitudin ex euismod. Etiam mattis luctus mauris quis mattis.
+            </p>
+            <p>Phasellus quis ipsum at risus blandit tristique quis vitae urna. Donec eget ligula id elit ultrices tristique ut nec est. Nunc elementum scelerisque lacus a dictum. Maecenas sit amet vestibulum ex.
+            </p>
+        </div>
+    </section>
+    <section class="my-[14%] md:my-[5%]">
+        <h1 class="text-center text-2xl leading-none mb-[5%] md:text-5xl md:leading-[1.10]">Latest news</h1>
+        <main class="container flex flex-wrap md:flex-nowrap justify-between">
+            <div class="h-[270px] md:h-[220px] w-full md:w-[45%] flex flex-wrap mb-[8%] md:flex-nowrap shadow-lg shadow-gray-200 relative">
+                <div class="h-2/5 w-full  md:h-full md:w-4/12 md:inline-block rounded-t-xl md:rounded-t-none md:rounded-l-xl bg-[url(./images/news1.jpg)] bg-no-repeat bg-cover bg-center"> </div>
+               <div class="h-3/4 w-full md:h-full md:w-3/4 md:inline-block p-[5%] ">
+                <p class="text-sm">By Emma Jones•Jan 25, 2021</p>
+                <h3 class="text-black mt-2 ">The multiple nutrients of citrus fruits. A powerful antioxidant.</h3>
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis...</p>
+                <a href="#" class="text-[#c0ca67] absolute left-auto top-auto right-4 bottom-4">Discover More</a>
+               </div>
+            </div>
+            <div class="h-[270px] md:h-[220px] w-full md:w-[45%] flex flex-wrap mb-[3%] md:flex-nowrap shadow-lg shadow-gray-200 relative">
+                <div class="h-2/5 w-full md:h-full md:w-4/12 md:inline-block rounded-t-xl md:rounded-t-none md:rounded-l-xl bg-[url(./images/news2.jpg)] bg-no-repeat bg-cover bg-center"> </div>
+                <div class="h-3/5 w-full md:h-full md:w-3/4 md:inline-block p-[5%]">
+                 <p class="text-sm">ByJohn Smith•Jan 18, 2021</p>
+                 <h3 class="text-black mt-2 ">Why is Organic Food good for you? Benefits of Eating organic.</h3>
+                 <p class="mb-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis...</p>
+                 <a href="#" class="text-[#c0ca67] absolute left-auto top-auto right-4 bottom-4">Discover More</a>
+                </div>
+             </div>
+
+    </main>
+    </section>
+    <section class="w-[85%] mx-auto" >
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g10.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g11.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g12.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g13.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g14.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g15.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g16.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g17.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g18.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+        <a href="#" class="inline-block relative h-[130px] md:h-[250px] w-[18%] m-2 ascale">
+            <img src="./images/g19.jpg" class="w-full rounded-lg h-full">
+            <div class="flex absolute left-0 right-0 bottom-0 top-0 opacity-0 hover:opacity-[1] bg-black/60 rounded-lg items-center justify-center">
+                <img src="./images/search.svg">
+            </div>
+        </a>
+    </section>
+</body>
+</html>
